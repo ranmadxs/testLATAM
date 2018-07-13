@@ -1,6 +1,7 @@
 package com.testlatam.examples;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ public class OpenweathermapTest {
 	private static final Logger log = LoggerFactory.getLogger(OpenweathermapTest.class);
 	
 	@Test
+	@Ignore
 	public void test() {
 		boolean isMetric = true;
 		CurrentWeather currentWeather;
