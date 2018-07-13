@@ -8,6 +8,7 @@
 - Spring Boot
 - Java
 - AngularJS
+- Docker
 
 ## Run
 `mvn spring-boot:run`
