@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import com.testlatam.WebApplication;
+import com.testlatam.exception.LatamException;
 import com.testlatam.services.WeatherService;
 import com.testlatam.vo.CityVO;
 import com.testlatam.vo.WeatherVO;
@@ -30,14 +31,14 @@ public class WeatherServiceTest {
 
 
 	@Test
-	public void findWeatherTest() {
+	public void findWeatherTest() throws LatamException{
 
 		
 		log.info("findWeatherTest");
 		CityVO city = new CityVO();
 		city.setCity("London");
 		city.setMode("xml");
-		city.setUnits("");
+		city.setUnits("imperial");
 		WeatherVO weather = weatherService.find(city);
 		Assert.assertNotNull("Weather can not be null", weather);
 

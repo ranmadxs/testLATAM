@@ -3,29 +3,35 @@ app.controller('WeatherController', function($http, $scope, $location,
 	console.info(">> Init ", "WeatherController");
 
 	$scope.weather = {
-		city : "Medellin",
-		country : "CO",
-		latitude : 6.25,
-		longitude : 89.3,
-		currentWeather : 20,
-		windSpeed : 4.1
+		city : "",
+		country : "",
+		latitude : 0,
+		longitude : 0,
+		currentWeather : 0,
+		windSpeed : 0
 	};
 
 	$scope.data = {
 		cities : [
-			{
-				id : 'Medellin',
-				name : 'Medellin'
-			},
-			{
-				id : 'London',
-				name : 'London'
-			}
+			{id : 'Madrid',	name : 'Madrid'	},
+			{id : 'Barcelona',	name : 'Barcelona'},
+			{id : 'Santiago',	name : 'Santiago'},
+			{id : 'London',	name : 'London' },
 		]
 	}
 
 	$scope.getWeather = function() {
 		console.log("selectedCity=" + $scope.selectedCity + ", selectedUnit=" + $scope.selectedUnit, "WeatherController->getWeather");
+		
+		$scope.msgError01 = "";
+		$scope.msgError02 = "";
+		if ($scope.selectedCity == "" || $scope.selectedCity == undefined){
+			$scope.msgError01 = "city required";
+		}
+
+		if ($scope.selectedUnit == "" || $scope.selectedUnit == undefined){
+			$scope.msgError02 = "unit ​​required";
+		}
 		
 		weatherService.find({ city: $scope.selectedCity, units : $scope.selectedUnit }, function (data) {  
 			$scope.weather.city = data.city;

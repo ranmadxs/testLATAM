@@ -1,5 +1,6 @@
 package com.testlatam.services;
 
+import com.testlatam.exception.LatamException;
 import com.testlatam.vo.CityVO;
 import com.testlatam.vo.WeatherVO;
 
@@ -11,6 +12,6 @@ public interface WeatherService {
 	 * @param cityVO
 	 * @return WeatherVO
 	 */
-	WeatherVO find(CityVO cityVO);
+	WeatherVO find(CityVO cityVO) throws LatamException;
 
 }

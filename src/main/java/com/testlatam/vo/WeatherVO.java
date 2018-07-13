@@ -10,7 +10,7 @@ public class WeatherVO implements Serializable{
 	private String country;
 	private Double latitude;
 	private Double longitude;
-	private Integer currentWeather;
+	private Double currentWeather;
 	private Double windSpeed;
 	
 	public Double getLatitude() {
@@ -25,10 +25,10 @@ public class WeatherVO implements Serializable{
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	public Integer getCurrentWeather() {
+	public Double getCurrentWeather() {
 		return currentWeather;
 	}
-	public void setCurrentWeather(Integer currentWeather) {
+	public void setCurrentWeather(Double currentWeather) {
 		this.currentWeather = currentWeather;
 	}
 	public Double getWindSpeed() {

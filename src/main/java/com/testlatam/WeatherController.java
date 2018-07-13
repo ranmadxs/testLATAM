@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.testlatam.exception.LatamException;
 import com.testlatam.services.WeatherService;
 import com.testlatam.vo.CityVO;
 import com.testlatam.vo.WeatherVO;
@@ -31,7 +32,7 @@ public class WeatherController {
 			RequestMethod.POST }, produces = "application/json; charset=UTF-8")
 	public HttpEntity<WeatherVO> find(@RequestParam(value = "city", required = true) String city,
 			@RequestParam(value = "units", required = true) String units,
-			@RequestParam(value = "mode", required = false, defaultValue = "xml") String mode) {
+			@RequestParam(value = "mode", required = false, defaultValue = "xml") String mode) throws LatamException{
 		log.info("city=".concat(city).concat(", units=").concat(units).concat(", mode=").concat(mode));
 		CityVO cityVO = new CityVO();
 		cityVO.setCity(city);
