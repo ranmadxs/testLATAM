@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="TestLatamApp">
 
 <head>
 
@@ -17,9 +17,16 @@
     <!-- SB Admin CSS - Include with every page -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    <!-- Angularjs -->
+    <script src="js/angularjs-1.6.0/angular.min.js"></script>
+    <script src="js/angularjs-1.6.0/angular-resource.min.js"></script>
+    <script src="js/angularjs-1.6.0/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/weatherController.js"></script>
+
 </head>
 
-<body>
+<body ng-controller="WeatherController">
 
     <div id="wrapper">
 
@@ -39,6 +46,8 @@
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Form test</a>
+                            <a href="swagger-ui.html"><i class="fa fa-edit fa-fw"></i>Api Documentation</a>
+                            <a href="https://github.com/ranmadxs/testLATAM"><i class="fa fa-edit fa-fw"></i>GitHub</a>
                         </li>
                     </ul>
                     <!-- /#side-menu -->
@@ -68,17 +77,17 @@
                                     <form role="form">
                                         <div class="form-group">
                                             <label>Select the city</label>
-                                            <select class="form-control">
-                                                <option>Medellin</option>
+                                            <select class="form-control" ng-model="selectedCity">
+                                                <option ng-repeat="city in data.cities" value="{{city.id}}">{{city.name}}</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Select the metric system</label>
-                                            <select class="form-control">
+                                            <label>Select the unit system</label>
+                                            <select class="form-control" ng-model="selectedUnit">
                                                 <option>Metric</option>
                                             </select>
                                         </div>
-                                        <button type="submit" class="btn btn-default">Get weather</button>
+                                        <button type="submit" ng-click="getWeather('LOAD_NEW_CAPTURE')" class="btn btn-default">Get weather</button>
                                     </form>
 
                                 </div>
@@ -105,27 +114,27 @@
                                     <tbody>
                                     <tr>
                                         <td>City</td>
-                                        <td>Medellin</td>
+                                        <td ng-bind="weather.city"></td>
                                     </tr>
                                     <tr>
                                         <td>Country</td>
-                                        <td>CO</td>
+                                        <td ng-bind="weather.country"></td>
                                     </tr>
                                     <tr>
                                         <td>Latitude</td>
-                                        <td>6.25</td>
+                                        <td ng-bind="weather.latitude"></td>
                                     </tr>
                                     <tr>
                                         <td>Longitude</td>
-                                        <td>89.3</td>
+                                        <td ng-bind="weather.longitude"></td>
                                     </tr>
                                     <tr>
                                         <td>Current weather</td>
-                                        <td>20</td>
+                                        <td ng-bind="weather.currentWeather"></td>
                                     </tr>
                                     <tr>
                                         <td>Wind Speed</td>
-                                        <td>4.1</td>
+                                        <td ng-bind="weather.windSpeed"></td>
                                     </tr>
                                     </tbody>
                                 </table>
