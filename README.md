@@ -14,6 +14,7 @@
 `mvn spring-boot:run`
 
 ## Test
+`mvn test`
 
 ## Compile
 `mvn clean install`
