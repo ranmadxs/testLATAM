@@ -13,3 +13,10 @@
 `mvn spring-boot:run`
 
 ## Test
+
+## Compile
+`mvn clean install`
+### Compile with out test
+`mvn clean install -DskipTests`
+
+## Docker
