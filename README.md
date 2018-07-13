@@ -22,3 +22,7 @@
 `mvn clean install -DskipTests`
 
 ## Docker
+
+`mvn clean package docker:build "-Ddocker.cert.path=/path_to_docker_cert" "-Ddocker.host=https://dockerhost:2376" "-Ddocker.registryUrl=nexus:8084"`
+
+`mvn docker:push "-Ddocker.host=https://dockerhost:2376" "-Ddocker.registryUrl=nexus:8085" "-Ddocker.cert.path=/path_to_docker_cert" `
