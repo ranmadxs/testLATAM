@@ -14,7 +14,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>        
+		<maven.compiler.target>1.8</maven.compiler.target> 
+		<docker.cert.path>/testLatam/dockerCert</docker.cert.path>
+		<docker.registryUrl>localhost:8083</docker.registryUrl>		
+		<docker.host>https://dockerLocal:2376</docker.host>			
     </properties>
 
     <dependencies>
@@ -64,6 +67,27 @@
     </dependencies>
     <build>
         <plugins>
+			<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<dockerHost>${docker.host}</dockerHost>
+						<dockerCertPath>${docker.cert.path}</dockerCertPath>
+						<imageName>${docker.registryUrl}/rpa/${project.artifactId}:${project.version}</imageName>
+						<baseImage>ofayau/ejre:8-jre</baseImage>
+						<registryUrl>${docker.registryUrl}</registryUrl>
+						<entryPoint>export TZ='Chile/Continental'; java -jar $DjavaArgs /${project.build.finalName}.jar</entryPoint>
+						<serverId>docker-releases</serverId>
+						<resources>
+							<resource>
+								<targetPath>/</targetPath>
+								<directory>${project.build.directory}</directory>
+								<include>${project.build.finalName}.jar</include>
+							</resource>
+						</resources>
+					</configuration>
+			</plugin>		
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
