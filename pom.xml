@@ -62,7 +62,7 @@
 					<configuration>
 						<dockerHost>${docker.host}</dockerHost>
 						<dockerCertPath>${docker.cert.path}</dockerCertPath>
-						<imageName>${docker.registryUrl}/rpa/${project.artifactId}:${project.version}</imageName>
+						<imageName>${docker.registryUrl}/latam/${project.artifactId}:${project.version}</imageName>
 						<baseImage>ofayau/ejre:8-jre</baseImage>
 						<registryUrl>${docker.registryUrl}</registryUrl>
 						<entryPoint>export TZ='Chile/Continental'; java -jar $DjavaArgs /${project.build.finalName}.jar</entryPoint>
